@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="skill_sync_job" model="ir.cron">
+        <field name="name">Skills Sync</field>
+        <field name="model_id" ref="model_school_net_skills"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_api_call()</field>
+        <field name='interval_number'>15</field>
+        <field name='interval_type'>minutes</field>
+        <field name="numbercall">-1</field>
+    </record>
+</odoo>

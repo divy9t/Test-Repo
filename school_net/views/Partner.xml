@@ -1,0 +1,52 @@
+<odoo>
+	<data>
+		<record id="view_partner_form_sms" model="ir.ui.view">
+			<field name="name">res.partner.form.sms</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form"/>
+			<field name="arch" type="xml">
+				<div name="button_box" position="inside">
+					<button class="oe_stat_button" name="%(sn_activities_action)d" type="action" icon="fa-star">
+                        <div class="o_field_widget o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="sn_activityCount" widget="statinfo" nolabel="1" class="mr4"/>
+                            </span>
+                            <span class="o_stat_text">Activities</span>
+                        </div>
+                    </button>
+				</div>
+				<xpath expr="//field[@name='type']" position="after">				
+					<field name="sn_skillsExchangeId" invisible="1"/>
+					<field name="sn_createSource" readonly="1"/>
+				</xpath>
+				<xpath expr="//field[@name='vat']" position="after">				
+					<field name="sn_createDate" readonly="1"/>
+				</xpath>
+				<xpath expr="//notebook" position="inside">
+					<page string="Skills Exchange">
+						<group>
+							<group>
+								<field name="sn_counsellingRequired" readonly="1"/>
+								<field name="sn_employmentPreference" readonly="1"/>
+								<field name="sn_creatorRole" readonly="1"/>
+								<field name="sn_category" readonly="1"/>
+								<field name="sn_source" readonly="1"/>
+								<field name="sn_gender" readonly="1"/>
+								<field name="sn_Experience" readonly="1"/>
+								<field name="sn_isMobileVerified" readonly="1"/>
+							</group>
+							<group string="Updates">
+								<field name="sn_areEducationDetailsUpdated" readonly="1"/>
+								<field name="sn_arePreferredLocationsUpdated" readonly="1"/>
+								<field name="sn_arePreferredCategoriesUpdated" readonly="1"/>
+								<field name="sn_areEmploymentHistoriesUpdated" readonly="1"/>
+								<field name="sn_isSelfIntroUpdated" readonly="1"/>
+							</group>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+
+	</data>
+</odoo>

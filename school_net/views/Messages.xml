@@ -1,0 +1,62 @@
+<odoo>
+	<data>
+		<record id="sn_message_log_tree_view" model="ir.ui.view">
+			<field name="name">Log Message Tree View</field>
+			<field name="model">school_net.messages</field>
+			<field name="arch" type="xml">
+				<tree string="Message Logs">
+					<field name="sn_recipient"/>
+					<field name="sn_messageType"/>
+					<field name="sn_sentTime"/>
+					<field name="sn_location"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="sn_message_log_form_view">
+	      <field name="name">Log Message Form View</field>
+	      <field name="model">school_net.messages</field>
+	      <field name="arch" type="xml">
+	        <form>
+	          <sheet>
+	          	<div class="oe_title">
+	                <label for="sn_recipient" string="Recipient" class="oe_edit_only"/>
+	                <h1><field name="sn_recipient" required="1"/></h1>
+
+	            </div>
+	           <group name="first" col="2">
+                    <field name="sn_sentTime" class="oe_inline"/>
+                </group>
+
+                <group>
+		          	<group>
+			          	<field name="sn_messageType"/>
+			          	<field name="sn_deliverdOn"/>
+			        </group> 
+			        <group>
+			          	<field name="sn_location"/>
+			          	<field name="sn_status"/>
+			        </group> 
+			    </group>
+
+	          </sheet>
+	        </form>
+	      </field>
+	    </record>
+
+		<record id="sn_message_log_action" model="ir.actions.act_window">
+			<field name="name">Message Logs</field>
+			<field name="res_model">school_net.messages</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="help" type="html">
+			   <p class="o_view_nocontent_smiling_face">Create New Record</p>
+			</field>
+		</record>
+
+
+		
+		<menuitem id="sn_message_menuitem" name="Message Logs" parent="sn_config_menuitem" action="sn_message_log_action"/>
+		
+	</data>
+</odoo>

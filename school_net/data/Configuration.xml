@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data noupdate="1">
+		<record id="icp_sn_skills_api" model="ir.config_parameter">
+            <field name="key">school_net.skills_api</field>
+            <field name="value">https://apitest.pravasirojgar.com/graphql</field>
+        </record>
+
+        <record id="icp_sn_skills_username" model="ir.config_parameter">
+            <field name="key">school_net.skills_username</field>
+            <field name="value">stg_admin</field>
+        </record>
+
+
+        <record id="icp_sn_skills_password" model="ir.config_parameter">
+            <field name="key">school_net.skills_password</field>
+            <field name="value">stg_admin@123456</field>
+        </record>   
+
+        <record id="icp_sn_skills_limit" model="ir.config_parameter">
+            <field name="key">school_net.skills_limit</field>
+            <field name="value">100</field>
+        </record>   
+
+        <record id="icp_sn_callout_list_push_api" model="ir.config_parameter">
+            <field name="key">school_net.bulk_push_api</field>
+            <field name="value">https://api1.cloudagent.in/cloudAgentRestAPI/index.php/AddCampaignBulkData/addBulkData/format/json</field>
+        </record>
+
+        <record id="icp_sn_api_key" model="ir.config_parameter">
+            <field name="key">school_net.api_key</field>
+            <field name="value">KK31748ebd99a92286270c6dae11b8e779</field>
+        </record>
+
+        <record id="icp_sn_callout_list_push_api_rec_num" model="ir.config_parameter">
+            <field name="key">school_net.api_rec_num</field>
+            <field name="value">1</field>
+        </record>
+
+
+    </data>
+
+</odoo>

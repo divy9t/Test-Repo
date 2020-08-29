@@ -1,0 +1,34 @@
+<odoo>
+	<data>
+		<record id="sn_message_call_tree_view" model="ir.ui.view">
+			<field name="name">Log Calls Tree View</field>
+			<field name="model">school_net.calls</field>
+			<field name="arch" type="xml">
+				<tree string="Message Logs">
+					<field name="sn_CallerID"/>
+					<field name="sn_AgentPhoneNumber"/>
+					<field name="sn_Disposition"/>
+					<field name="sn_CampaignName"/>
+					<field name="sn_CampaignStatus"/>
+					<field name="create_date"/>
+					
+				</tree>
+			</field>
+		</record>
+
+		<record id="sn_message_call_action" model="ir.actions.act_window">
+			<field name="name">Call Logs</field>
+			<field name="res_model">school_net.calls</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="help" type="html">
+			   <p class="o_view_nocontent_smiling_face">Create New Record</p>
+			</field>
+		</record>
+
+
+		
+		<menuitem id="sn_call_menuitem" name="Call Logs" parent="sn_config_menuitem" action="sn_message_call_action"/>
+		
+	</data>
+</odoo>

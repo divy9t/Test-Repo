@@ -1,0 +1,32 @@
+<odoo>
+	<data>
+		<record id="sn_log_tree_view" model="ir.ui.view">
+			<field name="name">Logs Tree View</field>
+			<field name="model">school_net.log</field>
+			<field name="arch" type="xml">
+				<tree string="Client Master" decoration-danger="sn_Status == False" decoration-success="sn_Status == True">
+					<field name="sn_Activity"/>
+					<field name="sn_RecordsCreated"/>
+					<field name="sn_RecordsUpdated"/>
+					<field name="sn_Message"/>
+					<field name="sn_Status" invisible="1"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="sn_log_action" model="ir.actions.act_window">
+			<field name="name">Logs</field>
+			<field name="res_model">school_net.log</field>
+			<field name="view_mode">tree</field>
+			<field name="domain">[]</field>
+			<field name="help" type="html">
+			   <p class="o_view_nocontent_smiling_face">Logs</p>
+			</field>
+		</record>
+
+
+		<menuitem id="sn_report_menuitem" name="Reporting" parent="sn_master_menu" />
+		
+		<menuitem id="sn_log_menuitem" name="Logs" parent="sn_report_menuitem" action="sn_log_action"/>
+	</data>
+</odoo>

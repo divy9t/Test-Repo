@@ -1,0 +1,30 @@
+<odoo>
+	<data>
+		<record id="sn_client_tree_view" model="ir.ui.view">
+			<field name="name">Client Tree View</field>
+			<field name="model">school_net.clients</field>
+			<field name="arch" type="xml">
+				<tree string="Client Master" editable="bottom">
+					<field name="sn_client"/>
+					<field name="sn_key"/>
+					<field name="sn_isActive"/>
+				</tree>
+			</field>
+		</record>
+
+		<record id="sn_client_action" model="ir.actions.act_window">
+			<field name="name">Clients</field>
+			<field name="res_model">school_net.clients</field>
+			<field name="view_mode">tree</field>
+			<field name="domain">[]</field>
+			<field name="help" type="html">
+			   <p class="o_view_nocontent_smiling_face">Create New Client</p>
+			</field>
+		</record>
+
+
+		<menuitem id="sn_config_menuitem" name="Configuration" parent="sn_master_menu" />
+		
+		<menuitem id="sn_client_menuitem" name="Client" parent="sn_config_menuitem" action="sn_client_action"/>
+	</data>
+</odoo>

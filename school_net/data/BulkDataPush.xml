@@ -1,0 +1,21 @@
+<odoo>
+	<record id="sn_push_callout_list" model="ir.cron">
+        <field name="name">Push Callout List to Ozonetel</field>
+        <field name="model_id" ref="model_school_net_callout_list_line"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_api_call()</field>
+        <field name='interval_number'>3</field>
+        <field name='interval_type'>minutes</field>
+        <field name="numbercall">-1</field>
+    </record>
+
+    <record id="sn_create_callout_lists" model="ir.cron">
+        <field name="name">Create Callout Lists</field>
+        <field name="model_id" ref="model_school_net_campaign"/>
+        <field name="state">code</field>
+        <field name="code">model._cron_api_call()</field>
+        <field name='interval_number'>1</field>
+        <field name='interval_type'>days</field>
+        <field name="numbercall">-1</field>
+    </record>
+</odoo>

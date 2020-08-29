@@ -1,0 +1,86 @@
+<odoo>
+	<data>
+		<record id="sn_callout_list_tree_view" model="ir.ui.view">
+			<field name="name">Callout List Tree View</field>
+			<field name="model">school_net.callout_list</field>
+			<field name="arch" type="xml">
+				<tree string="Bulk Contact Push" decoration-muted="sn_status=='Success'" decoration-danger="sn_status=='Failure'" decoration-warning="sn_status=='Warning'">
+					<field name="sn_name"/>
+					<field name="sn_calloutListLines"/>
+					<field name="sn_status"/>
+				</tree>
+			</field>
+		</record>
+
+		<record model="ir.ui.view" id="sn_callout_list_form_view">
+		  <field name="name">Callout List Form View</field>
+		  <field name="model">school_net.callout_list</field>
+		  <field name="arch" type="xml">
+			<form>
+			  <sheet>
+				<div class="oe_title">
+					<label for="sn_name" string="Name"/>
+					<h1><field name="sn_name" readonly="1"/></h1>
+
+				</div>
+			   <group name="first" col="2">
+					<field name="create_date" class="oe_inline"/>
+					<field name="sn_campaignName" class="oe_inline" readonly="1"/>
+					<field name="sn_status" class="oe_inline"/>
+				</group>
+
+				<notebook name="BulkDataLine">
+					<page name="BulkDataLine" string="Contact Records">
+						<field name="sn_calloutListLines">
+							<tree string="Contact Record" decoration-muted="sn_pushStatus=='Synced'" decoration-danger="sn_pushStatus=='Failed'" decoration-warning="sn_pushStatus=='Pending Sync'">
+								<field name="sn_contactId"/>
+								<field name="sn_contactNumber"/>
+								<field name="sn_pushStatus"/>
+							</tree>
+							<form>
+								<sheet>
+									<group>
+										<field name="sn_contactId" readonly="1"/>
+										<field name="sn_contactNumber" readonly="1"/>
+										<field name="sn_pushStatus" readonly="1"/>								
+									</group>
+								</sheet>
+							</form>
+						</field>
+					</page>                	
+				</notebook>
+
+			  </sheet>
+			  <div class="oe_chatter">
+                  <field name="activity_ids" widget="mail_activity"/>
+                  <field name="message_ids" widget="mail_thread"/>
+			</div>
+			</form>
+		  </field>
+		</record>
+
+		<record id="sn_callout_list_action" model="ir.actions.act_window">
+			<field name="name">Campaign Callout List</field>
+			<field name="res_model">school_net.callout_list</field>
+			<field name="view_mode">tree,form</field>
+			<field name="domain">[]</field>
+			<field name="help" type="html">
+			   <p class="o_view_nocontent_smiling_face">Create New Record</p>
+			</field>
+		</record>
+
+
+		
+		<menuitem id="sn_callout_list_menuitem" name="Campaign Callout List" parent="sn_config_menuitem" action="sn_callout_list_action"/>
+
+	     <record id="sn_callout_list_push_action" model="ir.actions.server">
+            <field name="name">Upload Contacts</field>
+            <field name="model_id" ref="school_net.model_school_net_callout_list"/>
+            <field name="binding_model_id" ref="school_net.model_school_net_callout_list"/>
+            <field name="binding_view_types">form</field>
+            <field name="state">code</field>
+            <field name="code">action = records._push_data()</field>
+        </record>
+		
+	</data>
+</odoo>
