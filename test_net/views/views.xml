@@ -1,7 +1,7 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
-<!--
+
     <record model="ir.ui.view" id="test_net.list">
       <field name="name">test_net list</field>
       <field name="model">test_net.test_net</field>
@@ -13,19 +13,32 @@
         </tree>
       </field>
     </record>
--->
+
+    <record model="ir.ui.view" id="test_net.form">
+      <field name="name">test_net form</field>
+      <field name="model">test_net.test_net</field>
+      <field name="arch" type="xml">
+        <form>
+          <field name="name" attrs="{'invisible':[('value','=',False)]}"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </form>
+      </field>
+    </record>
+
+
 
     <!-- actions opening views on models -->
-<!--
+
     <record model="ir.actions.act_window" id="test_net.action_window">
       <field name="name">test_net window</field>
       <field name="res_model">test_net.test_net</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree</field>
     </record>
--->
+
 
     <!-- server action to the one above -->
-<!--
+
     <record model="ir.actions.server" id="test_net.action_server">
       <field name="name">test_net server</field>
       <field name="model_id" ref="model_test_net_test_net"/>
@@ -33,28 +46,28 @@
       <field name="code">
         action = {
           "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
+          "view_mode": "tree",
           "res_model": model._name,
         }
       </field>
     </record>
--->
+
 
     <!-- Top menu item -->
-<!--
+
     <menuitem name="test_net" id="test_net.menu_root"/>
--->
+
     <!-- menu categories -->
-<!--
+
     <menuitem name="Menu 1" id="test_net.menu_1" parent="test_net.menu_root"/>
     <menuitem name="Menu 2" id="test_net.menu_2" parent="test_net.menu_root"/>
--->
+
     <!-- actions -->
-<!--
+
     <menuitem name="List" id="test_net.menu_1_list" parent="test_net.menu_1"
               action="test_net.action_window"/>
     <menuitem name="Server to list" id="test_net" parent="test_net.menu_2"
               action="test_net.action_server"/>
--->
+
   </data>
 </odoo>
