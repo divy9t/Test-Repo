@@ -13,7 +13,19 @@ class test_net(models.Model):
     description = fields.Text()
     new_field = fields.Text()
 
+    name = fields.Selection(APPROVER_FOR, string="Approver For")
+    user = fields.Many2one("res.users", string="Approver")
+
     @api.depends("value")
     def _value_pc(self):
         for record in self:
             record.value2 = float(record.value) / 100
+
+    @api.onchange("user")
+    def _user_rights_check(self):
+        for record in self:
+            if record.user:
+                if not record.user.has_group("ssms.group_ssms_approver"):
+                    raise ValidationError(
+                        "The user %s don't have approval rights" % (record.user.name)
+                    )
