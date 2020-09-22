@@ -20,12 +20,3 @@ class test_net(models.Model):
     def _value_pc(self):
         for record in self:
             record.value2 = float(record.value) / 100
-
-    @api.onchange("user")
-    def _user_rights_check(self):
-        for record in self:
-            if record.user:
-                if not record.user.has_group("ssms.group_ssms_approver"):
-                    raise ValidationError(
-                        "The user %s don't have approval rights" % (record.user.name)
-                    )
