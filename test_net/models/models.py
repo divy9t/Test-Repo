@@ -8,8 +8,10 @@ class test_net(models.Model):
     _description = "test_net.test_net"
 
     name = fields.Char()
-    value = fields.Integer()
+    value = fields.Integer("e")
+    value3 = fields.Integer()
     value2 = fields.Float(compute="_value_pc", store=True)
+
     description = fields.Text()
     new_field = fields.Text()
 
@@ -20,3 +22,11 @@ class test_net(models.Model):
     def _value_pc(self):
         for record in self:
             record.value2 = float(record.value) / 100
+
+
+
+
+
+
+
+
